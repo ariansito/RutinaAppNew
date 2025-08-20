@@ -1,0 +1,35 @@
+🚀 EXPORTACIÓN RÁPIDA DE RUTINA APP 🚀
+
+📱 PARA ANDROID (Windows):
+1. Doble clic en "exportar_app.bat"
+2. Esperar a que termine la instalación
+3. Ejecutar: npx cap open android
+4. En Android Studio: Build → Build APK(s)
+5. El APK estará en: android/app/build/outputs/apk/debug/
+
+🍎 PARA iOS (requiere Mac):
+1. Instalar Xcode desde App Store
+2. Ejecutar: npx cap add ios
+3. Ejecutar: npx cap open ios
+4. En Xcode: Product → Archive
+5. Exportar como .ipa
+
+⚠️ REQUISITOS:
+- Node.js instalado (https://nodejs.org/)
+- Android Studio (para Android)
+- Xcode (para iOS, solo en Mac)
+
+🔧 COMANDOS ÚTILES:
+- npm install (instalar dependencias)
+- npx cap sync (sincronizar cambios)
+- npx cap run android (build rápido Android)
+- npx cap run ios (build rápido iOS)
+
+📁 ARCHIVOS GENERADOS:
+- Android: app-debug.apk
+- iOS: RutinaApp.ipa
+
+❓ AYUDA:
+- Leer README_EXPORTACION.md para instrucciones detalladas
+- Verificar que todas las herramientas estén instaladas
+- Revisar la consola para mensajes de error

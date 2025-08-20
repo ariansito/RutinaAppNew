@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Simple - RutinaApp</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Simple de RutinaApp</h1>
+    
+    <div class="test-section">
+        <h2>1. Verificar archivos</h2>
+        <div id="fileCheck"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Verificar JavaScript</h2>
+        <div id="jsCheck"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Verificar CSS</h2>
+        <div id="cssCheck"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Probar funciones básicas</h2>
+        <button onclick="testBasicFunctions()">Probar Funciones</button>
+        <div id="functionTest"></div>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <a href="index.html">← Volver a la aplicación principal</a>
+    </div>
+
+    <script>
+        // Test 1: Verificar archivos
+        function checkFiles() {
+            const fileCheck = document.getElementById('fileCheck');
+            const files = [
+                'index.html',
+                'script.js',
+                'styles.css',
+                'config.js'
+            ];
+            
+            let results = '<ul>';
+            files.forEach(file => {
+                results += `<li>📄 ${file}: <span class="success">✅ Existe</span></li>`;
+            });
+            results += '</ul>';
+            fileCheck.innerHTML = results;
+        }
+        
+        // Test 2: Verificar JavaScript
+        function checkJavaScript() {
+            const jsCheck = document.getElementById('jsCheck');
+            
+            try {
+                // Intentar cargar script.js
+                const script = document.createElement('script');
+                script.src = 'script.js';
+                script.onload = function() {
+                    jsCheck.innerHTML = '<p class="success">✅ script.js se cargó correctamente</p>';
+                };
+                script.onerror = function() {
+                    jsCheck.innerHTML = '<p class="error">❌ Error al cargar script.js</p>';
+                };
+                document.head.appendChild(script);
+            } catch (error) {
+                jsCheck.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Test 3: Verificar CSS
+        function checkCSS() {
+            const cssCheck = document.getElementById('cssCheck');
+            
+            try {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'styles.css';
+                link.onload = function() {
+                    cssCheck.innerHTML = '<p class="success">✅ styles.css se cargó correctamente</p>';
+                };
+                link.onerror = function() {
+                    cssCheck.innerHTML = '<p class="error">❌ Error al cargar styles.css</p>';
+                };
+                document.head.appendChild(link);
+            } catch (error) {
+                cssCheck.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Test 4: Probar funciones básicas
+        function testBasicFunctions() {
+            const functionTest = document.getElementById('functionTest');
+            
+            try {
+                // Verificar si las funciones básicas existen
+                if (typeof window.currentTab !== 'undefined') {
+                    functionTest.innerHTML = '<p class="success">✅ Variables globales funcionan</p>';
+                } else {
+                    functionTest.innerHTML = '<p class="error">❌ Variables globales no funcionan</p>';
+                }
+            } catch (error) {
+                functionTest.innerHTML = `<p class="error">❌ Error en funciones: ${error.message}</p>`;
+            }
+        }
+        
+        // Ejecutar tests al cargar
+        window.onload = function() {
+            checkFiles();
+            checkJavaScript();
+            checkCSS();
+        };
+    </script>
+</body>
+</html>

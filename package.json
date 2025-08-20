@@ -1,0 +1,29 @@
+{
+  "name": "rutina-app",
+  "version": "1.0.0",
+  "description": "Aplicación de rutinas y calendario para iOS y Android",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Build completado'",
+    "ios": "npx cap run ios",
+    "android": "npx cap run android",
+    "sync": "npx cap sync",
+    "add-ios": "npx cap add ios",
+    "add-android": "npx cap add android"
+  },
+  "keywords": ["rutina", "calendario", "pwa", "capacitor"],
+  "author": "Arian",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "^5.5.0",
+    "@capacitor/core": "^5.5.0"
+  },
+  "dependencies": {
+    "@capacitor/ios": "^5.5.0",
+    "@capacitor/android": "^5.5.0",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/haptics": "^5.0.0",
+    "@capacitor/keyboard": "^5.0.0",
+    "@capacitor/status-bar": "^5.0.0"
+  }
+}

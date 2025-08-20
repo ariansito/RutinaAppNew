@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpiar Storage - RutinaApp Nueva</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        button { padding: 15px 30px; margin: 10px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #c82333; }
+        .btn-primary { background: #007bff; }
+        .btn-primary:hover { background: #0056b3; }
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #218838; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 15px; border-radius: 8px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Limpiar Storage de RutinaApp Nueva</h1>
+        
+        <div class="warning">
+            <h3>⚠️ Atención</h3>
+            <p>Esta herramienta eliminará <strong>TODOS</strong> los datos guardados en la aplicación, incluyendo:</p>
+            <ul style="text-align: left;">
+                <li>Tareas de trabajo y vida personal</li>
+                <li>Horarios de trabajo 6x4</li>
+                <li>Reuniones semanales</li>
+                <li>Cualquier otra configuración</li>
+            </ul>
+            <p><strong>Esta acción no se puede deshacer.</strong></p>
+        </div>
+        
+        <div class="info">
+            <h3>ℹ️ ¿Por qué limpiar?</h3>
+            <p>Se han eliminado las tareas predefinidas del código, pero si ya las tenías guardadas anteriormente, necesitas limpiar el storage para que no aparezcan más.</p>
+        </div>
+        
+        <div>
+            <button onclick="clearAllStorage()" class="btn-danger">
+                🗑️ LIMPIAR TODO EL STORAGE
+            </button>
+        </div>
+        
+        <div id="result"></div>
+        
+        <div style="margin-top: 30px;">
+            <a href="index.html" style="text-decoration: none;">
+                <button class="btn-success">
+                    🚀 Ir a RutinaApp
+                </button>
+            </a>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="test-storage.html" style="text-decoration: none;">
+                <button class="btn-primary">
+                    🔍 Verificar Storage
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function clearAllStorage() {
+            if (confirm('¿Estás SEGURO de que quieres eliminar TODOS los datos? Esta acción no se puede deshacer.')) {
+                try {
+                    // Clear localStorage
+                    const keysToRemove = [];
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key && key.includes('rutinaApp')) {
+                            keysToRemove.push(key);
+                        }
+                    }
+                    
+                    keysToRemove.forEach(key => {
+                        localStorage.removeItem(key);
+                    });
+                    
+                    // Clear sessionStorage
+                    const sessionKeysToRemove = [];
+                    for (let i = 0; i < sessionStorage.length; i++) {
+                        const key = sessionStorage.key(i);
+                        if (key && key.includes('rutinaApp')) {
+                            sessionKeysToRemove.push(key);
+                        }
+                    }
+                    
+                    sessionKeysToRemove.forEach(key => {
+                        sessionStorage.removeItem(key);
+                    });
+                    
+                    const result = document.getElementById('result');
+                    result.innerHTML = `
+                        <div class="success">
+                            <h3>✅ Storage limpiado exitosamente</h3>
+                            <p>Se eliminaron ${keysToRemove.length} claves de localStorage y ${sessionKeysToRemove.length} claves de sessionStorage.</p>
+                            <p>Ahora puedes ir a la aplicación y empezar desde cero sin tareas predefinidas.</p>
+                        </div>
+                    `;
+                    
+                } catch (error) {
+                    const result = document.getElementById('result');
+                    result.innerHTML = `
+                        <div class="warning">
+                            <h3>❌ Error al limpiar</h3>
+                            <p>Error: ${error.message}</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Auto-check current storage status
+        window.onload = function() {
+            const result = document.getElementById('result');
+            let currentKeys = [];
+            
+            // Check localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.includes('rutinaApp')) {
+                    currentKeys.push(key);
+                }
+            }
+            
+            // Check sessionStorage
+            for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                if (key && key.includes('rutinaApp')) {
+                    currentKeys.push(key);
+                }
+            }
+            
+            if (currentKeys.length > 0) {
+                result.innerHTML = `
+                    <div class="info">
+                        <h3>📊 Estado actual del Storage</h3>
+                        <p>Se encontraron ${currentKeys.length} claves de RutinaApp:</p>
+                        <ul style="text-align: left; display: inline-block;">
+                            ${currentKeys.map(key => `<li><code>${key}</code></li>`).join('')}
+                        </ul>
+                        <p>Haz clic en "LIMPIAR TODO" para eliminarlas.</p>
+                    </div>
+                `;
+            } else {
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>✅ Storage ya está limpio</h3>
+                        <p>No se encontraron datos de RutinaApp en el storage.</p>
+                        <p>Puedes ir directamente a la aplicación.</p>
+                    </div>
+                `;
+            }
+        };
+    </script>
+</body>
+</html>

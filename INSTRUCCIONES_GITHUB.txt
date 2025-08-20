@@ -1,0 +1,174 @@
+🚀 GUÍA COMPLETA PARA SUBIR A GITHUB 🚀
+
+## 📋 PASOS PREVIOS
+
+### 1. Instalar Git
+- Descarga desde: https://git-scm.com/
+- Instala con configuración por defecto
+- Reinicia tu terminal después de la instalación
+
+### 2. Crear cuenta en GitHub
+- Ve a: https://github.com/
+- Crea una cuenta nueva
+- Verifica tu email
+
+## 🔧 CONFIGURACIÓN INICIAL
+
+### 1. Configurar Git (solo la primera vez)
+```bash
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu-email@ejemplo.com"
+```
+
+### 2. Ejecutar script automatizado
+- Doble clic en "subir_a_github.bat"
+- Sigue las instrucciones en pantalla
+
+## 🌐 CREAR REPOSITORIO EN GITHUB
+
+### 1. Ir a GitHub
+- Ve a: https://github.com/new
+- O haz clic en el botón "+" → "New repository"
+
+### 2. Configurar repositorio
+- **Repository name**: `rutina-app` (o el nombre que prefieras)
+- **Description**: `Aplicación PWA para organizar rutinas y calendario`
+- **Visibility**: Public (recomendado) o Private
+- **NO marques**: "Add a README file"
+- **NO marques**: "Add .gitignore"
+- **NO marques**: "Choose a license"
+- Haz clic en "Create repository"
+
+## 🔗 CONECTAR REPOSITORIO LOCAL CON GITHUB
+
+### 1. Copiar URL del repositorio
+- En tu repositorio de GitHub, haz clic en "Code"
+- Copia la URL HTTPS (ej: https://github.com/tu-usuario/rutina-app.git)
+
+### 2. Conectar repositorio local
+```bash
+# Reemplaza TU-USUARIO con tu nombre de usuario de GitHub
+git remote add origin https://github.com/TU-USUARIO/rutina-app.git
+```
+
+### 3. Verificar conexión
+```bash
+git remote -v
+```
+Deberías ver algo como:
+```
+origin  https://github.com/TU-USUARIO/rutina-app.git (fetch)
+origin  https://github.com/TU-USUARIO/rutina-app.git (push)
+```
+
+## 📤 SUBIR CÓDIGO A GITHUB
+
+### 1. Subir rama principal
+```bash
+git push -u origin main
+```
+
+### 2. Si es la primera vez, GitHub te pedirá autenticación
+- Usa tu nombre de usuario de GitHub
+- Para contraseña, usa un Personal Access Token
+
+## 🔑 CREAR PERSONAL ACCESS TOKEN
+
+### 1. Ir a configuración de GitHub
+- Haz clic en tu foto de perfil → Settings
+- En el menú izquierdo: Developer settings → Personal access tokens → Tokens (classic)
+
+### 2. Generar nuevo token
+- Haz clic en "Generate new token (classic)"
+- **Note**: `Rutina App Access`
+- **Expiration**: 90 days (o el que prefieras)
+- **Scopes**: Marca solo "repo"
+- Haz clic en "Generate token"
+
+### 3. Copiar token
+- **IMPORTANTE**: Copia el token inmediatamente
+- Guárdalo en un lugar seguro
+- Úsalo como contraseña cuando Git te lo pida
+
+## 🌐 ACTIVAR GITHUB PAGES
+
+### 1. Ir a configuración del repositorio
+- En tu repositorio: Settings → Pages
+
+### 2. Configurar Pages
+- **Source**: Deploy from a branch
+- **Branch**: main
+- **Folder**: / (root)
+- Haz clic en "Save"
+
+### 3. Esperar despliegue
+- GitHub tardará unos minutos en desplegar tu app
+- Verás un mensaje: "Your site is published at https://tu-usuario.github.io/rutina-app"
+
+## 📱 ACCEDER A TU APP
+
+### 1. URL de la app
+```
+https://tu-usuario.github.io/rutina-app
+```
+
+### 2. Compartir
+- Comparte esta URL con quien quieras
+- La app funciona en cualquier dispositivo
+- Se puede instalar como PWA
+
+## 🔄 ACTUALIZACIONES FUTURAS
+
+### 1. Hacer cambios en tu código
+### 2. Agregar cambios a Git
+```bash
+git add .
+git commit -m "📝 Descripción de los cambios"
+```
+
+### 3. Subir a GitHub
+```bash
+git push origin main
+```
+
+### 4. GitHub Pages se actualiza automáticamente
+
+## 🚨 SOLUCIÓN DE PROBLEMAS
+
+### Error: "Authentication failed"
+- Verifica tu Personal Access Token
+- Asegúrate de que el token tenga permisos "repo"
+
+### Error: "Repository not found"
+- Verifica que la URL del repositorio sea correcta
+- Asegúrate de que el repositorio exista en GitHub
+
+### Error: "Permission denied"
+- Verifica que tengas permisos de escritura en el repositorio
+- Asegúrate de ser el propietario o colaborador
+
+## 📞 AYUDA ADICIONAL
+
+### Documentación oficial
+- Git: https://git-scm.com/doc
+- GitHub: https://docs.github.com/
+- GitHub Pages: https://pages.github.com/
+
+### Comandos útiles
+```bash
+git status          # Ver estado del repositorio
+git log             # Ver historial de commits
+git branch          # Ver ramas
+git remote -v       # Ver repositorios remotos
+```
+
+## 🎯 RESULTADO FINAL
+
+Después de completar todos los pasos tendrás:
+✅ Repositorio en GitHub con tu código
+✅ Sitio web público en GitHub Pages
+✅ URL para compartir tu aplicación
+✅ Sistema de control de versiones configurado
+✅ Despliegue automático en cada actualización
+
+¡Tu Rutina App estará disponible para todo el mundo! 🌍

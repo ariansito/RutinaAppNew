@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Calendar - RutinaApp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h1>Test del Calendario</h1>
+        
+        <h2>Verificar que los elementos existen:</h2>
+        <div id="elementCheck"></div>
+        
+        <h2>Verificar que script.js se carga:</h2>
+        <div id="scriptCheck"></div>
+        
+        <h2>Probar botones del calendario:</h2>
+        <button class="quick-action-btn work-schedule" id="addWorkScheduleBtn">
+            <i class="fas fa-clock"></i>
+            Horario de Trabajo 6x4
+        </button>
+        <button class="quick-action-btn weekly-meeting" id="addWeeklyMeetingBtn">
+            <i class="fas fa-users"></i>
+            Reunión Semanal
+        </button>
+        
+        <h2>Probar calendario:</h2>
+        <div class="calendar-view">
+            <div class="calendar-header">
+                <button class="calendar-nav" id="prevMonth">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="current-month" id="currentMonth">Agosto 2025</div>
+                <button class="calendar-nav" id="nextMonth">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="index.html">← Volver a la aplicación principal</a>
+        </div>
+    </div>
+
+    <script>
+        // Verificar que los elementos existen
+        window.onload = function() {
+            const elementCheck = document.getElementById('elementCheck');
+            const scriptCheck = document.getElementById('scriptCheck');
+            
+            // Verificar elementos
+            const elements = [
+                'addWorkScheduleBtn',
+                'addWeeklyMeetingBtn',
+                'prevMonth',
+                'nextMonth',
+                'currentMonth',
+                'calendarGrid'
+            ];
+            
+            let elementResults = '<ul>';
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    elementResults += `<li>✅ ${id}: Encontrado</li>`;
+                } else {
+                    elementResults += `<li>❌ ${id}: NO encontrado</li>`;
+                }
+            });
+            elementResults += '</ul>';
+            elementCheck.innerHTML = elementResults;
+            
+            // Verificar que script.js se carga
+            if (typeof window.currentTab !== 'undefined') {
+                scriptCheck.innerHTML = '<p>✅ script.js se cargó correctamente</p>';
+            } else {
+                scriptCheck.innerHTML = '<p>❌ script.js NO se cargó</p>';
+            }
+            
+            // Probar botones
+            const addWorkScheduleBtn = document.getElementById('addWorkScheduleBtn');
+            const addWeeklyMeetingBtn = document.getElementById('addWeeklyMeetingBtn');
+            
+            if (addWorkScheduleBtn) {
+                addWorkScheduleBtn.addEventListener('click', function() {
+                    alert('Botón Horario de Trabajo 6x4 funciona!');
+                });
+            }
+            
+            if (addWeeklyMeetingBtn) {
+                addWeeklyMeetingBtn.addEventListener('click', function() {
+                    alert('Botón Reunión Semanal funciona!');
+                });
+            }
+        };
+    </script>
+</body>
+</html>
