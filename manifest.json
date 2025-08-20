@@ -2,7 +2,7 @@
     "name": "RutinaApp - Organiza tu día",
     "short_name": "RutinaApp",
     "description": "Aplicación para organizar tareas de trabajo y vida personal con calendario integrado",
-    "start_url": "/",
+    "start_url": "https://ariansito.github.io/RutinaAppNew/",
     "display": "standalone",
     "background_color": "#667eea",
     "theme_color": "#667eea",
@@ -16,3 +16,4 @@
         }
     ]
 }
+
